@@ -10,6 +10,8 @@ import { routes } from './app.routes';
 import { provideAuthStore, provideSetupStore, StoreType } from './app.store';
 import { authInterceptor } from './auth';
 import { fakeApiInterceptor } from './core/fake-api';
+import { fakeApiInterceptor } from './core/fake-api';
+import { fakeApiInterceptor } from './core/error.interceptor';
 
 // ⚠️ FIXME: choose one store and remove any packages in real app ⚠️
 const storeType = StoreType.Ngxs;
@@ -27,6 +29,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withInterceptors([
         authInterceptor,
+        errorInterceptor,
         // ⚠️ FIXME: remove it in real app ⚠️
         fakeApiInterceptor,
       ])
